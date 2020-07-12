@@ -24,37 +24,37 @@
   ],
   "remote_images": [
     {
-      "url": "https://live.staticflickr.com/2175/1886783068_7dee5ade29_o.jpg",
+      "url": "https://booru.github.io/static/test-images/cat_loaf.jpg",
       "description": "A random creative-commons picture of a cat",
       "source_url": "https://www.flickr.com/photos/8254546@N03/1886783068",
       "tag_input": "artist:Ryo, cat, shadow, no pony, loafing, outdoors, safe"
     },
     {
-      "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Trefoil_Surface_Animated.gif",
+      "url": "https://booru.github.io/static/test-images/Trefoil_Surface_Animated.gif",
       "source_url": "https://commons.wikimedia.org/wiki/File:Trefoil_Surface_Animated.gif",
       "description": "By MichaelFrey / CC BY-SA (https://creativecommons.org/licenses/by-sa/4.0)",
       "tag_input": "3d, animated, artist:MichaelFrey, no pony, no sound, safe, weird surface"
     },
     {
-      "url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Tuscany_landscape_west_of_Siena.jpg",
+      "url": "https://booru.github.io/static/test-images/Tuscany_landscape_west_of_Siena.jpg",
       "source_url": "https://commons.wikimedia.org/wiki/File:Tuscany_landscape_west_of_Siena.jpg",
       "description": "by Norbert Nagel, Mörfelden-Walldorf, Germany / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)",
       "tag_input": "artist:Norbert Nagel, canterlot, cloud, landscape, germany, safe"
     },
     {
-      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Mitochondria.svg",
+      "url": "https://booru.github.io/static/test-images/Mitochondria.svg",
       "source_url": "https://commons.wikimedia.org/wiki/File:Mitochondria.svg",
       "description": "by Nevit / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)",
       "tag_input": "artist:Nevit, safe, simple background, svg, .svg available, the powerhouse of the cell"
-    }
-  ],
-  "local_images": [
+    },
     {
-      "path": "priv/repo/images/maneboorutestcube0001-0250.webm",
-      "source_url": "url needed",
-      "tag_input": "artist:CinnaTrost, webm, cube, safe"
+      "url": "https://booru.github.io/static/test-images/boorutestcube0001-0250.webm",
+      "source_url": "https://booru.github.io/static/test-images/boorutestcube0001-0250.webm",
+      "description": "CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)",
+      "tag_input": "artist:CinnaToast, webm, cube, safe"
     }
   ],
+  "local_images": [],
   "comments": [
     "bold is *bold*, italic is _italic_, spoiler is [spoiler]spoiler[/spoiler], code is @code@, underline is +underline+, strike is -strike-, sup is ^sup^, sub is ~sub~.",
     "inline embedded thumbnails (tsp): >>1t >>1s >>1p",
