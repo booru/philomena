@@ -45,7 +45,12 @@ config :exq,
 
 config :philomena, Philomena.Repo,
   # ssl: true,
-  url: database_url,
+  username: "postgres",
+  password: "postgres",
+  database: "philomena_db",
+  hostname: "postgres",
+  show_sensitive_data_on_connection_error: true,
+  #url: database_url,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "32")
 
 config :philomena, PhilomenaWeb.Mailer,

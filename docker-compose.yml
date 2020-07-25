@@ -20,6 +20,10 @@ services:
     environment:
       - MIX_ENV=dev
       - PGPASSWORD=postgres
+      - PGDATABASE=philomena_db
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+      - SECRET_KEY_BASE=pofhuztofzewtrzrkzswtq9f3vqeslsobklifmdsekklsjetrdrdk.ykskueif,zorvuz97rersn
+      - PASSWORD_PEPPER=jiegjdfoigjerjgijviojewjniojotuizufddyxrekökhoijuogduekj
     tty: true
     depends_on:
       - postgres

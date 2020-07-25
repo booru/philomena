@@ -57,20 +57,32 @@ docker volume rm philomena_postgres_data
 To manually start the app container and run commands from `docker/app/run-development` or `docker/app/run-prod`, uncomment the entrypoint line in `docker-compose.yml`, then run `docker-compose up`. In another shell, run `docker-compose exec app bash` and you should be good to go. As next steps, you'll usually want to manually execute the commands from the above mentioned run scripts and look at the console output to see what the problem is. From this container, you can also connect to the postgresql database using `psql -h postgres -U postgres`.
 
 ## Deployment
-You need a key installed on the server you target, and the git remote installed in your ssh configuration.
+```
+cd ~
+mkdir booru
+cd booru
+git clone https://github.com/booru/philomena
+cd philomena
+sed -i 's/MIX_ENV=dev/MIX_ENV=prod/g' ~/booru/philomena/docker-compose.yml
+sed -i 's/DemoBooruPassword/YourNewDesiredSecretPassword/g' ~/booru/philomena/priv/repo/seeds.json
+sed -i 's/admin@example.com/yourAdmin@email.tld/g' ~/booru/philomena/priv/repo/seeds.json
+sed -i 's/Administrator/YourAdminAccountName/g' ~/booru/philomena/priv/repo/seeds.json
+sed -i 's/SomeRandomSampleSecret1234/YourLongLongRandomSecret/g' ~/booru/philomena/Dockerfile.app
+docker-compose build
+```
+If this is your first start on this machine or you reset the docker virtual disks, follow these steps to create a new database. Otherwise, just execute `docker-compose up` to start the application.
 
-    git remote add production philomena@<serverip>:philomena/
-
-The general syntax is:
-
-    git push production master
-
-And if everything goes wrong:
-
-    git reset HEAD^ --hard
-    git push -f production master
-
-(to be repeated until it works again)
+Uncomment the entrypoint line in `docker-compose.yml`. Run `docker-compose up`. In another shell, run `docker-compose exec app bash`. Then:
+```
+# dropdb -h postgres -U postgres philomena_db
+createdb -h postgres -U postgres philomena_db 
+mix ecto.setup
+mix reindex_all
+mix ecto.migrate
+exit
+docker-compose down
+```
+Comment the entrypoint line in `docker-compose.yml` (add the # again). Then start the app by running `docker-compose up`.
 
 ## Customize
 To customize your booru, find and replace all occurences of the following words with your desired content
@@ -80,6 +92,7 @@ To customize your booru, find and replace all occurences of the following words 
 - Rule names that are selectable when reporting violations can be adjusted in `lib/philomena_web/views/report_view.ex`
 - In `config/config.exs` adjust your own `password_pepper`, `otp_secret_key` and `tumblr_api_key`
 - Predefined forum sections can be changed in `priv/repo/seeds.json` in the forums section
+- Set a custom secret_key_base as `SECRET_KEY_BASE` system environment for the app container. To create one, run `mix phx.gen.secret` within the app container.
 
 ### image_url_root
 The baseUrl for image requests can be changed using the `image_url_root` variable in `config/config.exs`. This url is used for rendering images onto the html templates and changing it can be used to cache request with a cdn. The Proxy has to redirect to the `/img` endpoint of philomena. (see `lib/philomena_web/views/image_view.ex:85`). It is appended with either `view` or `download` depending on the context, as well as the date of upload and the image filename. Thumbnails will use the image-id as well as the thumbnail size (see `lib/philomena_web/views/image_view.ex:47`)
