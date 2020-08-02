@@ -32,7 +32,7 @@ defmodule PhilomenaWeb.NotableNamePlug do
 
       conn
         |> Controller.fetch_flash()
-        |> Controller.put_flash(:error, ["That username is reserved for a notable fandom artist. Please choose another, and if you are the artist in question, ", link("contact the moderators", to: "/forums/meta"), " for verification."])
+        |> Controller.put_flash(:error, ["That username is reserved for a notable fandom participant. If you are the person in question, see ", link("the forum", to: "/forums/meta/topics/name-verification"), " for more information."])
         |> Controller.redirect(external: conn.assigns.referrer)
         |> Conn.halt()
     else
