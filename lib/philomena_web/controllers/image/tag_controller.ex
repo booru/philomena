@@ -10,6 +10,10 @@ defmodule PhilomenaWeb.Image.TagController do
   alias Philomena.Repo
   import Ecto.Query
 
+  plug PhilomenaWeb.LimitPlug,
+       [time: 5, error: "You may only update metadata once every 5 seconds."]
+       when action in [:update]
+
   plug PhilomenaWeb.FilterBannedUsersPlug
   plug PhilomenaWeb.CaptchaPlug
   plug PhilomenaWeb.UserAttributionPlug
@@ -25,8 +29,13 @@ defmodule PhilomenaWeb.Image.TagController do
         PhilomenaWeb.Endpoint.broadcast!(
           "firehose",
           "image:tag_update",
-          %{image_id: image.id, added: Enum.map(added_tags, & &1.name), removed: Enum.map(removed_tags, & &1.name)}
+          %{
+            image_id: image.id,
+            added: Enum.map(added_tags, & &1.name),
+            removed: Enum.map(removed_tags, & &1.name)
+          }
         )
+
         PhilomenaWeb.Endpoint.broadcast!(
           "firehose",
           "image:update",

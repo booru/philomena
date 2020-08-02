@@ -31,6 +31,7 @@ defmodule Philomena.Uploader do
           "size" => analysis.size,
           "format" => analysis.extension,
           "mime_type" => analysis.mime_type,
+          "duration" => analysis.duration,
           "aspect_ratio" => analysis.aspect_ratio,
 		  "duration" => analysis.duration,
           "orig_sha512_hash" => analysis.sha512,
