@@ -64,11 +64,6 @@ defmodule Philomena.Processors.Png do
     {_output, 0} =
       cond do
         animated? ->
-<<<<<<< HEAD
-          System.cmd("ffmpeg", ["-loglevel", "0", "-y", "-i", file, "-plays", "0", "-vf", scale_filter, "-f", "apng", scaled])
-
-            true ->
-=======
           System.cmd("ffmpeg", [
             "-loglevel",
             "0",
@@ -85,7 +80,6 @@ defmodule Philomena.Processors.Png do
           ])
 
         true ->
->>>>>>> phoenix-auth
           System.cmd("ffmpeg", ["-loglevel", "0", "-y", "-i", file, "-vf", scale_filter, scaled])
       end
 

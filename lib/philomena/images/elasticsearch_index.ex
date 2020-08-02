@@ -47,15 +47,9 @@ defmodule Philomena.Images.ElasticsearchIndex do
           mime_type: %{type: "keyword"},
           orig_sha512_hash: %{type: "keyword"},
           original_format: %{type: "keyword"},
-<<<<<<< HEAD
-		  pixels: %{type: "integer"},
-          score: %{type: "integer"},
-		  size: %{type: "integer"},
-=======
           pixels: %{type: "integer"},
           score: %{type: "integer"},
           size: %{type: "integer"},
->>>>>>> phoenix-auth
           sha512_hash: %{type: "keyword"},
           source_url: %{type: "keyword"},
           tag_count: %{type: "integer"},
@@ -102,15 +96,9 @@ defmodule Philomena.Images.ElasticsearchIndex do
       comment_count: image.comments_count,
       width: image.image_width,
       height: image.image_height,
-<<<<<<< HEAD
-	  pixels: image.image_width * image.image_height,
-	  size: image.image_size,
-	  duration: image.image_duration,
-=======
       pixels: image.image_width * image.image_height,
       size: image.image_size,
       duration: image.image_duration,
->>>>>>> phoenix-auth
       tag_count: length(image.tags),
       aspect_ratio: image.image_aspect_ratio,
       wilson_score: wilson_score(image),
