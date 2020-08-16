@@ -10,7 +10,8 @@ Allow: /images/*
 
 Disallow: /images
 Disallow: /tags
-Disallow: /searchDisallow: /profiles
+Disallow: /search
+Disallow: /profiles
 Disallow: /api
 
 Disallow: /harming/humans
