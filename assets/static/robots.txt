@@ -1,7 +1,16 @@
-User-agent: *
-Crawl-delay: 0.5
+User-agent: MJ12bot
+user-agent: SemrushBot
+User-agent: AhrefsBot
+Disallow: /
 
-Disallow: /profiles
+User-agent: *
+Crawl-delay: 2
+
+Allow: /images/*
+
+Disallow: /images
+Disallow: /tags
+Disallow: /searchDisallow: /profiles
 Disallow: /api
 
 Disallow: /harming/humans
